@@ -3,14 +3,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class ProductGUI extends JFrame implements ActionListener{
+public class ProductGUI extends JFrame implements ActionListener {
 
     //create JLabels and JFields
     JLabel NameLabel = new JLabel("Customer Name");
     JTextField nameField = new JTextField(20);
 
     JLabel productLabel = new JLabel("Select Product");
-    JTextField productField = new JTextField(20);
+
+    //JComboBox items using array
+    String[] items = {"Cozy Nights Monarch mattress","Restonic Barbados mattress","Sealy Plunkett mattress"};
+    JComboBox<String> productField = new JComboBox<String>(items);
 
     JLabel priceLabel = new JLabel("Enter Price");
     JTextField priceField = new JTextField(20);
@@ -18,6 +21,8 @@ public class ProductGUI extends JFrame implements ActionListener{
     JButton button = new JButton("Process");
 
     public ProductGUI() {
+
+        //adding the layout components inside the constructor
         super("ProductApp");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new FlowLayout());
@@ -40,12 +45,14 @@ public class ProductGUI extends JFrame implements ActionListener{
 
     }
 
-    //main method
+    //main method on the event dispatch thread
     public static void main (String[] args) {
-        ProductGUI frame =  new ProductGUI();
-        final int WIDTH = 400;
-        final int HEIGHT = 500;
-        frame.setSize(WIDTH, HEIGHT);
-        frame.setVisible(true);
+        SwingUtilities.invokeLater(()->{
+            ProductGUI frame =  new ProductGUI();
+            final int WIDTH = 400;
+            final int HEIGHT = 500;
+            frame.setSize(WIDTH, HEIGHT);
+            frame.setVisible(true);
+        });
     }
 }
