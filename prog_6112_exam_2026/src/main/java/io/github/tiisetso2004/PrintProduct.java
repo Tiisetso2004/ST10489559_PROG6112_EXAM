@@ -1,7 +1,5 @@
 package io.github.tiisetso2004;
 
-import java.lang.classfile.attribute.SourceDebugExtensionAttribute;
-
 public class PrintProduct implements IProduct {
     //because there are no parameters in interface method header we define it in constructor
     private int [][] sales;

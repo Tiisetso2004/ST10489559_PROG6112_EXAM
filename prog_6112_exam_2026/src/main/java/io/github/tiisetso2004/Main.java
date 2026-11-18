@@ -52,5 +52,9 @@ public class Main {
             }
             System.out.println();
         }
+
+        //print the report
+        PrintProduct product = new PrintProduct(sales);
+        product.printReport();
     }
 }
